@@ -1,0 +1,13 @@
+{% extends 'imama/base.html' %}
+{% block content %}
+<div>
+    <h1>Pacientes Imama</h1>
+</div>
+
+{% for paciente in pacientes %}
+    <div class="row-lista">
+        <h3><a href="{% url 'paciente_detalhe' pk=paciente.pk %}">{{ paciente.nome }}</a></h3>
+        <!--<div>Cadastro: {{ paciente.data_cadastro }}</div>-->
+    </div>
+{% endfor %}
+{% endblock %}

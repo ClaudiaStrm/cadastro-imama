@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Cadastro IMAMA</title>
+        <link rel="stylesheet" href="{% static 'css/imama.css' %}">
+    </head>
+    <body>
+      <div class="cabecalho">
+        {% if user.is_authenticated %}
+        <ul>
+          <li><a href="/"> Lista de pacientes</a></li>
+          <li><a href="{% url 'nova_paciente' %}"> Adicionar paciente</a></li>
+        </ul>
+        {% endif %}
+      </div>
+      <div class="corpo">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </body>
+</html>

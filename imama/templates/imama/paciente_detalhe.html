@@ -1,0 +1,65 @@
+{% extends 'imama/base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div class="post">
+        <h1>{{ paciente.nome }}</h1>
+        <p><span class="negrito">Idade: </span>{{ paciente.idade }}</p>
+        <p><span class="negrito">Data de nascimento: </span>{{ paciente.data_nascimento }}</p>
+        <p><span class="negrito">Sexo: </span>{{ paciente.sexo }}</p>
+        <p><span class="negrito">Etnia: </span>{{ paciente.etnia }}</p>
+        <p><span class="negrito">Telefone: </span>{{ paciente.telefone }}</p>
+        <p><span class="negrito">Celular: </span>{{ paciente.celular }}</p>
+        <p><span class="negrito">E-mail: </span>{{ paciente.email }}</p>
+        <p><span class="negrito">Endereço: </span>{{ paciente.endereco }}</p>
+        <p><span class="negrito">Cidade: </span>{{ paciente.cidade }}</p>
+        <p><span class="negrito">Pessoa para contato: </span>{{ paciente.contato_nome }}</p>
+        <p><span class="negrito">Telefone do contato: </span>{{ paciente.contato_telefone }}</p>
+        <p><span class="negrito">Navegador: </span>{{ paciente.amigo_rosa }}</p>
+        <p><span class="negrito">Onde assistiu a pelestra do IMAMA: </span>{{ paciente.local_palestra }}</p>
+        <p><span class="negrito">Observações: </span>{{ paciente.observacoes }}</p>
+        <p><span class="negrito">Data do cadastro: </span>{{ paciente.data_cadastro}}</p>
+
+        <hr>
+        <h3>Entrevista</h3>
+        <p><span class="negrito"> Data da entrevista: </span> {{ paciente.data_entrevista }}</p>
+        Data da entrevista e mamografia PoA Rural
+        <p><span class="negrito"> Unidade de Atenção Básica de Referência: </span> {{ paciente.UAB_referencia }}</p>
+        <p><span class="negrito"> Nº Cartão SUS: </span> {{ paciente.cartao_sus }}</p>
+        <p><span class="negrito"> Utiliza outro tipo de sistema de saúde: </span> {{ paciente.sistema_saude }}</p>
+        <p><span class="negrito"> Recebe algum benefício do governo: </span> {{ paciente.beneficio_governo }}</p>
+        <p><span class="negrito"> Nº de filhos: </span> {{ paciente.qtdade_filhos }}</p>
+        <p><span class="negrito"> Estado civil: </span> {{ paciente.estado_civil }}</p>
+        <p><span class="negrito"> Idade dos filhos: </span> {{ paciente.idade_filhos }}</p>
+        <p><span class="negrito"> Profissão: </span> {{ paciente.profissao }}</p>
+        <p><span class="negrito"> Atualmente exerce a profissão: </span> {{ paciente.exerce_profissao }}</p>
+        <p><span class="negrito"> Data da menarca (1ª menstruação): </span> {{ paciente.data_menarca }}</p>
+        <p><span class="negrito"> Menopausa: </span> {{ paciente.menopausa }}</p>
+        <p><span class="negrito"> Há quanto tempo: </span> {{ paciente.data_menopausa }}</p>
+        <p><span class="negrito"> Reposição hormonal: </span> {{ paciente.reposicao_hormonal }}</p>
+        <p><span class="negrito"> Há quanto tempo: </span> {{ paciente.data_reposicao_hormonal }}</p>
+        <p><span class="negrito"> Onde trabalha: </span> {{ paciente.local_trabalho }}</p>
+        <p><span class="negrito"> É responsável pelo sustento da família: </span> {{ paciente.sustenta_familia }}</p>
+        <p><span class="negrito"> Quantas pessoas moram com você: </span> {{ paciente.pessoas_familia }}</p>
+        <p><span class="negrito"> Escolaridade: </span> {{ paciente.escolaridade }}</p>
+        <p><span class="negrito"> Costuma procurar o serviço de saúde para: </span> {{ paciente.motivos_servico_saude }}</p>
+        <p><span class="negrito"> Data da última consulta com ginecologista: </span> {{ paciente.ultima_consulta_ginecologista }}</p>
+        <p><span class="negrito"> Costuma examinar suas próprias mamas: </span> {{ paciente.auto_exame }}</p>
+        <p><span class="negrito"> Suas mamas são apalpadas por profissionais de saúde: </span> {{ paciente.exame_profissional }}</p>
+        <p><span class="negrito"> Data da mamografia mais recente: </span> {{ paciente.data_mamografia }}</p>
+        <p><span class="negrito"> Conclusão do laudos da mamografia mais recente: </span> {{ paciente.conclusao_laudo_mamografia }}</p>
+        <p><span class="negrito"> Outros exames das mamas (data): </span> {{ paciente.data_outros_exames }}</p>
+        <p><span class="negrito"> Conclusão do laudo dos outros exames: </span> {{ paciente.conclusao_laudo_outros_exames }}</p>
+        <p><span class="negrito"> Quais orientações recebeu sobre os resultados dos exames, por quem e quando: </span> {{ paciente.orientacoes_exames }}</p>
+        <p><span class="negrito"> Percebeu alguma alteração na mama?: </span> {{ paciente.alteracao_mama }}</p>
+        <p><span class="negrito"> Tem familiares com câncer de mama: </span> {{ paciente.familiares_cancer_mama }}</p>
+        <p><span class="negrito"> Já fez alguma cirurgia nas mamas: </span> {{ paciente.cirurgia_mamas }}</p>
+        <p><span class="negrito"> Tipo de cirugia: </span> {{ paciente.tipo_cirurgia_mamas }}</p>
+        <p><span class="negrito"> Observações: </span> {{ paciente.observacoes_entrevista }}</p>
+    </div>
+    <button class="btn">
+      <a href="{% url 'editar_paciente' pk=paciente.pk %}">Editar Paciente</a>
+    </button>
+
+
+
+{% endblock %}
