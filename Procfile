@@ -1,1 +1,1 @@
-gunicorn imama.wsgi --log-file -
+web: gunicorn imama.wsgi --log-file -
