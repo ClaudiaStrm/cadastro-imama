@@ -1,3 +1,9 @@
 Django==1.11.9
+pbr==3.1.1
 pkg-resources==0.0.0
 pytz==2017.3
+six==1.11.0
+stevedore==1.28.0
+virtualenv==15.1.0
+virtualenv-clone==0.2.6
+virtualenvwrapper==4.8.2
