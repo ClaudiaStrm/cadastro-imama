@@ -20,10 +20,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@cfu=!(2lw(+1p-^wdp$k8llxr__g+pszbb5=o+6)9))fb()-)'
+#SECRET_KEY = '@cfu=!(2lw(+1p-^wdp$k8llxr__g+pszbb5=o+6)9))fb()-)'
+import os
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '@cfu=!(2lw(+1p-^wdp$k8llxr__g+pszbb5=o+6)9))fb()-)')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
 ALLOWED_HOSTS = []
 
@@ -77,12 +80,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 # Update database configuration with $DATABASE_URL.
 import dj_database_url
