@@ -6,7 +6,7 @@
     </head>
     <body>
       <div class="cabecalho">
-        {% if user.is_authenticated %}
+        {% if perms.pode_adicionar_paciente %}
         <ul>
           <li><a href="/"> Lista de pacientes</a></li>
           <li><a href="{% url 'nova_paciente' %}"> Adicionar paciente</a></li>

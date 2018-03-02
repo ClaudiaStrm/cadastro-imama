@@ -1,0 +1,36 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+{% if form.errors %}
+<p>Errrrrouuuuuuu tente novamente</p>
+{% endif %}
+
+{% if next %}
+  {% if user.is_authenticated %}
+  <p>Você não tem permissão pra isso. </p>
+  {% else %}
+  <p>Faça o login:</p>
+  {% endif %}
+{% endif %}
+
+  <form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+
+    <div>
+        <td>{{ form.username.label_tag }}</td>
+        <td>{{ form.username }}</td>
+    </div>
+
+    <div>
+        <td>{{ form.password.label_tag }}</td>
+        <td>{{ form.password }}</td>
+    </div>
+
+    <div>
+        <input type="Entrar" value="login">
+        <input type="hidden" name="next" value="{{ next }}">
+    </div>
+  </form>
+
+
+{% endblock %}

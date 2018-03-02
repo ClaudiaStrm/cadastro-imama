@@ -5,6 +5,9 @@ from .models import Paciente
 from django.shortcuts import render, get_object_or_404
 from .forms import PacienteForm
 from datetime import date
+from django.contrib.auth.models import Group
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import permission_required
 
 
 def pacientes(request):
@@ -23,6 +26,10 @@ def nova_paciente(request):
             paciente.imama = request.user
             #paciente.data_cadastro = timezone.now()
             paciente.save()
+            user = User.objects.create_user(username=paciente.nome, email=paciente.email, password=paciente.rg )
+            user.save()
+            grupo = Group.objects.get(name='Pacientes')
+            grupo.user_set.add(user)
             return redirect('paciente_detalhe', pk=paciente.pk)
     else:
         form = PacienteForm()

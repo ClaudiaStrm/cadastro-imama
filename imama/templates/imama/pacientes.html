@@ -4,10 +4,15 @@
     <h1>Pacientes Imama</h1>
 </div>
 
-{% for paciente in pacientes %}
-    <div class="row-lista">
-        <h3><a href="{% url 'paciente_detalhe' pk=paciente.pk %}">{{ paciente.nome }}</a></h3>
-        <!--<div>Cadastro: {{ paciente.data_cadastro }}</div>-->
-    </div>
-{% endfor %}
+{% if user.is_authenticated %}
+
+  {% for paciente in pacientes %}
+      <div class="row-lista">
+          <h3><a href="{% url 'paciente_detalhe' pk=paciente.pk %}">{{ paciente.nome }}</a></h3>
+          <!--<div>Cadastro: {{ paciente.data_cadastro }}</div>-->
+      </div>
+  {% endfor %}
+{% else %}
+<p>Você precisa estar logado para acessar as informações!</p>
+{% endif%}
 {% endblock %}

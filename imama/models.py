@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import Group
+from django.contrib.auth.models import User
 
 class Paciente(models.Model):
     imama = models.ForeignKey('auth.User',on_delete=models.CASCADE)
@@ -55,7 +57,14 @@ class Paciente(models.Model):
     tipo_cirurgia_mamas = models.TextField('Tipo de cirugia', blank=True)
     observacoes_entrevista = models.TextField('Observações', blank=True)
 
+    def criar_usuario(username, email, password):
+        usuario = User.objects.create_user(username=nome, email=email, password=rg )
+        user.save()
+        grupo = Group.objects.get(name='Paciente')
+        grupo.user_set.add(usuario)
+
     def publish(self):
+        criar_usuario(nome, email, rg)
         self.data_cadastro = timezone.now()
         self.save()
 
@@ -73,6 +82,12 @@ class AmigoRosa(models.Model):
     curso = models.CharField(max_length=200)
     cpf = models.CharField('CPF', max_length=15, help_text="Apenas números")
     rg = models.CharField('RG', max_length=15)
+
+    class Meta:
+        permissions = (
+            ('pode_adicionar_paciente', 'Pode adicionar paciente'),
+            ('pode_editar_paciente', 'Pode editar a paciente'),
+    )
 
     #espaço para foto
 
