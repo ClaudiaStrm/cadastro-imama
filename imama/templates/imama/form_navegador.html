@@ -1,0 +1,11 @@
+{% extends 'imama/base.html' %}
+
+{% block content %}
+    <h1>Cadastro Amigo Rosa</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Salvar</button>
+    </form>
+
+    <div class="aviso"> Os campos marcados com * são obrigatórios</div>
+{% endblock %}

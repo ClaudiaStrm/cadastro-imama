@@ -1,6 +1,6 @@
 from django import forms
-from .models import Paciente
 
+from .models import Paciente, AmigoRosa
 class PacienteForm(forms.ModelForm):
     class Meta:
         model = Paciente
@@ -18,4 +18,12 @@ class PacienteForm(forms.ModelForm):
         'conclusao_laudo_mamografia', 'data_outros_exames', 'conclusao_laudo_outros_exames',
         'orientacoes_exames', 'alteracao_mama', 'familiares_cancer_mama',
         'cirurgia_mamas', 'tipo_cirurgia_mamas', 'observacoes_entrevista',
+        )
+
+class AmigoRosaForm(forms.ModelForm):
+    class Meta:
+        model = AmigoRosa
+        fields = ('nome', 'endereco', 'contato', 'celular',
+        'data_nascimento','email', 'email',
+        'curso', 'cpf', 'rg',
         )

@@ -4,6 +4,7 @@ from django.utils import timezone
 from .models import Paciente
 from django.shortcuts import render, get_object_or_404
 from .forms import PacienteForm
+from .forms import AmigoRosaForm
 from datetime import date
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
@@ -48,3 +49,21 @@ def editar_paciente(request, pk):
     else:
         form = PacienteForm(instance=paciente)
     return render(request, 'imama/form_paciente.html', {'form': form})
+
+
+def novo_navegador(request):
+    if request.method == "POST":
+        form = AmigoRosaForm(request.POST)
+        if form.is_valid():
+            amigo_rosa = form.save(commit=False)
+            amigo_rosa.imama = request.user
+            #paciente.data_cadastro = timezone.now()
+            amigo_rosa.save()
+            user = User.objects.create_user(username=amigo_rosa.rg, email=amigo_rosa.email, password=amigo_rosa.rg)
+            user.save()
+            grupo = Group.objects.get(name='Amigos Rosa')
+            grupo.user_set.add(user)
+            return redirect('/')
+    else:
+        form = AmigoRosaForm()
+        return render(request, 'imama/form_navegador.html', {'form': form})
