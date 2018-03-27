@@ -72,6 +72,11 @@ p input {
   width: 75%;*/
 }
 
+a {
+  text-decoration: none;
+  color: #ec4f8c;
+}
+
 .negrito {
   font-weight: bold;
 }
